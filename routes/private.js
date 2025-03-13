@@ -4,8 +4,8 @@ import { PrismaClient } from "@prisma/client";
 const router = express.Router();
 const prisma = new PrismaClient();
 
-//Lista Usuários
-router.get("/listar-usuarios", async (req, res) => {
+//LIST
+router.get("/list", async (req, res) => {
   try {
     const users = await prisma.user.findMany({ omit: { password: true } });
 
@@ -15,14 +15,14 @@ router.get("/listar-usuarios", async (req, res) => {
   }
 });
 
-//Deleta Usuário
-router.delete("/deletar/:id", async (req, res) => {
+//DELETE
+router.delete("/delete/:id", async (req, res) => {
   try {
     const id = req.params.id;
 
     // Verifica se o usuário existe antes de deletar
     const userExists = await prisma.user.findUnique({
-      where: { id }, // Converte id para número, se necessário
+      where: { id },
     });
 
     if (!userExists) {
@@ -40,8 +40,8 @@ router.delete("/deletar/:id", async (req, res) => {
   }
 });
 
-//Atualiza Usuário
-router.put("/atualizar/:id", async (req, res) => {
+//UPDATE
+router.put("/update/:id", async (req, res) => {
   try {
     const id = req.params.id;
 

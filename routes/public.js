@@ -8,8 +8,8 @@ const router = express.Router();
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-//CADASTRO
-router.post("/cadastro", async (req, res) => {
+//REGISTER
+router.post("/register", async (req, res) => {
   try {
     const user = req.body;
 
