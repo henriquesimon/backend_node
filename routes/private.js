@@ -3,7 +3,6 @@ import { PrismaClient } from "@prisma/client";
 
 const router = express.Router();
 const prisma = new PrismaClient();
-import bcrypt from "bcrypt";
 
 //Lista Usuários
 router.get("/listar-usuarios", async (req, res) => {
