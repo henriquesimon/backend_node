@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const router = express.Router();
 const prisma = new PrismaClient();
+import bcrypt from "bcrypt";
 
 //Lista Usuários
 router.get("/listar-usuarios", async (req, res) => {
@@ -36,10 +37,38 @@ router.delete("/deletar/:id", async (req, res) => {
 
     res.status(200).json({ message: "Usuário deletado com sucesso" });
   } catch (err) {
-    console.error(err);
-    res
-      .status(500)
-      .json({ message: "Erro ao deletar usuário", error: err.message });
+    res.status(500).json({ message: "Erro ao deletar usuário" });
+  }
+});
+
+//Atualiza Usuário
+router.put("/atualizar/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    // Verifica se o usuário existe antes de atualizar
+    const userExists = await prisma.user.findUnique({
+      where: { id },
+    });
+
+    if (!userExists) {
+      return res.status(404).json({ message: "Usuário não encontrado" });
+    }
+
+    const { email, name } = req.body;
+
+    // Atualiza o usuário apenas com os campos enviados
+    const userDB = await prisma.user.update({
+      where: { id },
+      data: {
+        email: email || userExists.email,
+        name: name || userExists.name,
+      },
+    });
+
+    res.status(200).json(userDB);
+  } catch (err) {
+    res.status(500).json({ message: "Erro ao atualizar usuário" });
   }
 });
 
