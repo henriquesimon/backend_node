@@ -51,7 +51,7 @@ $ npm install (npm i)
 # Rode a aplicação
 $ npm start
 ```
-
+Obs: Para que o projeto seja iniciado corretamente, certifique-se de inserir os dados solicitados no arquivo ".env.example" <br> e alterar o nome do arquivo para ".env" .
 ## 👨‍💻 Tecnologias
 
 Essas são as tecnologias utilizadas nesse projeto
