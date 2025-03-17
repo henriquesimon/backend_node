@@ -67,4 +67,3 @@ Este projeto está sob a licença MIT. Consulte o [LICENSE](LICENSE.md) para obt
 
 Feito por Henrique Simon :wave: [Entre em contato comigo!](https://www.linkedin.com/in/henrique-simon/)
 :email: [henriquesimon1998@gmail.com](mailto:henriquesimon1998@gmail.com) &nbsp;
-GitHub: [github.com/henriquesimon](https://github.com/henriquesimon) &nbsp;
